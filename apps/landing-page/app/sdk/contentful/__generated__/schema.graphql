@@ -1,0 +1,1011 @@
+"""Represents a binary file in a space. An asset can be any file type."""
+type Asset {
+  contentType(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  fileName(locale: String): String
+  height(locale: String): Int
+  linkedFrom(allowedLocales: [String]): AssetLinkingCollections
+  size(locale: String): Int
+  sys: Sys!
+  title(locale: String): String
+  url(locale: String, transform: ImageTransformOptions): String
+  width(locale: String): Int
+}
+
+type AssetCollection {
+  items: [Asset]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input AssetFilter {
+  AND: [AssetFilter]
+  OR: [AssetFilter]
+  contentType: String
+  contentType_contains: String
+  contentType_exists: Boolean
+  contentType_in: [String]
+  contentType_not: String
+  contentType_not_contains: String
+  contentType_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  fileName: String
+  fileName_contains: String
+  fileName_exists: Boolean
+  fileName_in: [String]
+  fileName_not: String
+  fileName_not_contains: String
+  fileName_not_in: [String]
+  height: Int
+  height_exists: Boolean
+  height_gt: Int
+  height_gte: Int
+  height_in: [Int]
+  height_lt: Int
+  height_lte: Int
+  height_not: Int
+  height_not_in: [Int]
+  size: Int
+  size_exists: Boolean
+  size_gt: Int
+  size_gte: Int
+  size_in: [Int]
+  size_lt: Int
+  size_lte: Int
+  size_not: Int
+  size_not_in: [Int]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+  url: String
+  url_contains: String
+  url_exists: Boolean
+  url_in: [String]
+  url_not: String
+  url_not_contains: String
+  url_not_in: [String]
+  width: Int
+  width_exists: Boolean
+  width_gt: Int
+  width_gte: Int
+  width_in: [Int]
+  width_lt: Int
+  width_lte: Int
+  width_not: Int
+  width_not_in: [Int]
+}
+
+type AssetLinkingCollections {
+  awardsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AwardsCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  galleryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): GalleryCollection
+  heroCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): HeroCollection
+  informationCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): InformationCollection
+  partnersCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PartnersCollection
+  reviewsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ReviewsCollection
+  routesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): RoutesCollection
+  sliderCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SliderCollection
+}
+
+enum AssetOrder {
+  contentType_ASC
+  contentType_DESC
+  fileName_ASC
+  fileName_DESC
+  height_ASC
+  height_DESC
+  size_ASC
+  size_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  url_ASC
+  url_DESC
+  width_ASC
+  width_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/awards)
+"""
+type Awards implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): AwardsLinkingCollections
+  sys: Sys!
+  title(locale: String): String
+}
+
+type AwardsCollection {
+  items: [Awards]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input AwardsFilter {
+  AND: [AwardsFilter]
+  OR: [AwardsFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  image_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type AwardsLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum AwardsOrder {
+  description_ASC
+  description_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type ContentfulMetadata {
+  tags: [ContentfulTag]!
+}
+
+input ContentfulMetadataFilter {
+  tags: ContentfulMetadataTagsFilter
+  tags_exists: Boolean
+}
+
+input ContentfulMetadataTagsFilter {
+  id_contains_all: [String]
+  id_contains_none: [String]
+  id_contains_some: [String]
+}
+
+"""
+Represents a tag entity for finding and organizing content easily.
+    Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
+"""
+type ContentfulTag {
+  id: String
+  name: String
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z,
+    compliant with the 'date-time' format outlined in section 5.6 of
+    the RFC 3339 profile of the ISO 8601 standard for representation
+    of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""
+The 'Dimension' type represents dimensions as whole numeric values between `1` and `4000`.
+"""
+scalar Dimension
+
+interface Entry {
+  contentfulMetadata: ContentfulMetadata!
+  sys: Sys!
+}
+
+type EntryCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input EntryFilter {
+  AND: [EntryFilter]
+  OR: [EntryFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  sys: SysFilter
+}
+
+enum EntryOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/gallery)
+"""
+type Gallery implements Entry {
+  alt(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): GalleryLinkingCollections
+  src(locale: String, preview: Boolean): Asset
+  sys: Sys!
+}
+
+type GalleryCollection {
+  items: [Gallery]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input GalleryFilter {
+  AND: [GalleryFilter]
+  OR: [GalleryFilter]
+  alt: String
+  alt_contains: String
+  alt_exists: Boolean
+  alt_in: [String]
+  alt_not: String
+  alt_not_contains: String
+  alt_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  src_exists: Boolean
+  sys: SysFilter
+}
+
+type GalleryLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum GalleryOrder {
+  alt_ASC
+  alt_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+Place where the main hero content goes (main section images) [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/hero)
+"""
+type Hero implements Entry {
+  alt(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): HeroLinkingCollections
+  sys: Sys!
+  url(locale: String, preview: Boolean): Asset
+}
+
+type HeroCollection {
+  items: [Hero]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input HeroFilter {
+  AND: [HeroFilter]
+  OR: [HeroFilter]
+  alt: String
+  alt_contains: String
+  alt_exists: Boolean
+  alt_in: [String]
+  alt_not: String
+  alt_not_contains: String
+  alt_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  sys: SysFilter
+  url_exists: Boolean
+}
+
+type HeroLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum HeroOrder {
+  alt_ASC
+  alt_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""The 'HexColor' type represents color in `rgb:ffffff` string format."""
+scalar HexColor
+
+enum ImageFormat {
+  AVIF
+
+  """JPG image format."""
+  JPG
+
+  """
+  Progressive JPG format stores multiple passes of an image in progressively higher detail.
+          When a progressive image is loading, the viewer will first see a lower quality pixelated version which
+          will gradually improve in detail, until the image is fully downloaded. This is to display an image as
+          early as possible to make the layout look as designed.
+  """
+  JPG_PROGRESSIVE
+
+  """PNG image format"""
+  PNG
+
+  """
+  8-bit PNG images support up to 256 colors and weigh less than the standard 24-bit PNG equivalent.
+          The 8-bit PNG format is mostly used for simple images, such as icons or logos.
+  """
+  PNG8
+
+  """WebP image format."""
+  WEBP
+}
+
+enum ImageResizeFocus {
+  """Focus the resizing on the bottom."""
+  BOTTOM
+
+  """Focus the resizing on the bottom left."""
+  BOTTOM_LEFT
+
+  """Focus the resizing on the bottom right."""
+  BOTTOM_RIGHT
+
+  """Focus the resizing on the center."""
+  CENTER
+
+  """Focus the resizing on the largest face."""
+  FACE
+
+  """Focus the resizing on the area containing all the faces."""
+  FACES
+
+  """Focus the resizing on the left."""
+  LEFT
+
+  """Focus the resizing on the right."""
+  RIGHT
+
+  """Focus the resizing on the top."""
+  TOP
+
+  """Focus the resizing on the top left."""
+  TOP_LEFT
+
+  """Focus the resizing on the top right."""
+  TOP_RIGHT
+}
+
+enum ImageResizeStrategy {
+  """
+  Crops a part of the original image to fit into the specified dimensions.
+  """
+  CROP
+
+  """
+  Resizes the image to the specified dimensions, cropping the image if needed.
+  """
+  FILL
+
+  """Resizes the image to fit into the specified dimensions."""
+  FIT
+
+  """
+  Resizes the image to the specified dimensions, padding the image if needed.
+          Uses desired background color as padding color.
+  """
+  PAD
+
+  """
+  Resizes the image to the specified dimensions, changing the original aspect ratio if needed.
+  """
+  SCALE
+
+  """Creates a thumbnail from the image."""
+  THUMB
+}
+
+input ImageTransformOptions {
+  """
+  Desired background color, used with corner radius or `PAD` resize strategy.
+          Defaults to transparent (for `PNG`, `PNG8` and `WEBP`) or white (for `JPG` and `JPG_PROGRESSIVE`).
+  """
+  backgroundColor: HexColor
+
+  """
+  Desired corner radius in pixels.
+          Results in an image with rounded corners (pass `-1` for a full circle/ellipse).
+          Defaults to `0`. Uses desired background color as padding color,
+          unless the format is `JPG` or `JPG_PROGRESSIVE` and resize strategy is `PAD`, then defaults to white.
+  """
+  cornerRadius: Int
+
+  """Desired image format. Defaults to the original image format."""
+  format: ImageFormat
+
+  """Desired height in pixels. Defaults to the original image height."""
+  height: Dimension
+
+  """
+  Desired quality of the image in percents.
+          Used for `PNG8`, `JPG`, `JPG_PROGRESSIVE` and `WEBP` formats.
+  """
+  quality: Quality
+
+  """Desired resize focus area. Defaults to `CENTER`."""
+  resizeFocus: ImageResizeFocus
+
+  """Desired resize strategy. Defaults to `FIT`."""
+  resizeStrategy: ImageResizeStrategy
+
+  """Desired width in pixels. Defaults to the original image width."""
+  width: Dimension
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/information)
+"""
+type Information implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): InformationDescription
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): InformationLinkingCollections
+  sys: Sys!
+  title(locale: String): String
+}
+
+type InformationCollection {
+  items: [Information]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type InformationDescription {
+  json: JSON!
+  links: InformationDescriptionLinks!
+}
+
+type InformationDescriptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type InformationDescriptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type InformationDescriptionLinks {
+  assets: InformationDescriptionAssets!
+  entries: InformationDescriptionEntries!
+}
+
+input InformationFilter {
+  AND: [InformationFilter]
+  OR: [InformationFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  image_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type InformationLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum InformationOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""
+[See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/partners)
+"""
+type Partners implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): PartnersLinkingCollections
+  message(locale: String): String
+  name(locale: String): String
+  sys: Sys!
+  url(locale: String): String
+}
+
+type PartnersCollection {
+  items: [Partners]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input PartnersFilter {
+  AND: [PartnersFilter]
+  OR: [PartnersFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  image_exists: Boolean
+  message: String
+  message_contains: String
+  message_exists: Boolean
+  message_in: [String]
+  message_not: String
+  message_not_contains: String
+  message_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  sys: SysFilter
+  url: String
+  url_contains: String
+  url_exists: Boolean
+  url_in: [String]
+  url_not: String
+  url_not_contains: String
+  url_not_in: [String]
+}
+
+type PartnersLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum PartnersOrder {
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  url_ASC
+  url_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/prices)
+"""
+type Prices implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  currency(locale: String): String
+  description(locale: String): String
+  linkedFrom(allowedLocales: [String]): PricesLinkingCollections
+  price(locale: String): Float
+  sys: Sys!
+}
+
+type PricesCollection {
+  items: [Prices]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input PricesFilter {
+  AND: [PricesFilter]
+  OR: [PricesFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  currency: String
+  currency_contains: String
+  currency_exists: Boolean
+  currency_in: [String]
+  currency_not: String
+  currency_not_contains: String
+  currency_not_in: [String]
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  price: Float
+  price_exists: Boolean
+  price_gt: Float
+  price_gte: Float
+  price_in: [Float]
+  price_lt: Float
+  price_lte: Float
+  price_not: Float
+  price_not_in: [Float]
+  sys: SysFilter
+}
+
+type PricesLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum PricesOrder {
+  currency_ASC
+  currency_DESC
+  description_ASC
+  description_DESC
+  price_ASC
+  price_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+The 'Quality' type represents quality as whole numeric values between `1` and `100`.
+"""
+scalar Quality
+
+type Query {
+  asset(id: String!, locale: String, preview: Boolean): Asset
+  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  awards(id: String!, locale: String, preview: Boolean): Awards
+  awardsCollection(limit: Int = 100, locale: String, order: [AwardsOrder], preview: Boolean, skip: Int = 0, where: AwardsFilter): AwardsCollection
+  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
+  gallery(id: String!, locale: String, preview: Boolean): Gallery
+  galleryCollection(limit: Int = 100, locale: String, order: [GalleryOrder], preview: Boolean, skip: Int = 0, where: GalleryFilter): GalleryCollection
+  hero(id: String!, locale: String, preview: Boolean): Hero
+  heroCollection(limit: Int = 100, locale: String, order: [HeroOrder], preview: Boolean, skip: Int = 0, where: HeroFilter): HeroCollection
+  information(id: String!, locale: String, preview: Boolean): Information
+  informationCollection(limit: Int = 100, locale: String, order: [InformationOrder], preview: Boolean, skip: Int = 0, where: InformationFilter): InformationCollection
+  partners(id: String!, locale: String, preview: Boolean): Partners
+  partnersCollection(limit: Int = 100, locale: String, order: [PartnersOrder], preview: Boolean, skip: Int = 0, where: PartnersFilter): PartnersCollection
+  prices(id: String!, locale: String, preview: Boolean): Prices
+  pricesCollection(limit: Int = 100, locale: String, order: [PricesOrder], preview: Boolean, skip: Int = 0, where: PricesFilter): PricesCollection
+  reviews(id: String!, locale: String, preview: Boolean): Reviews
+  reviewsCollection(limit: Int = 100, locale: String, order: [ReviewsOrder], preview: Boolean, skip: Int = 0, where: ReviewsFilter): ReviewsCollection
+  routes(id: String!, locale: String, preview: Boolean): Routes
+  routesCollection(limit: Int = 100, locale: String, order: [RoutesOrder], preview: Boolean, skip: Int = 0, where: RoutesFilter): RoutesCollection
+  slider(id: String!, locale: String, preview: Boolean): Slider
+  sliderCollection(limit: Int = 100, locale: String, order: [SliderOrder], preview: Boolean, skip: Int = 0, where: SliderFilter): SliderCollection
+  video(id: String!, locale: String, preview: Boolean): Video
+  videoCollection(limit: Int = 100, locale: String, order: [VideoOrder], preview: Boolean, skip: Int = 0, where: VideoFilter): VideoCollection
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/reviews)
+"""
+type Reviews implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): ReviewsLinkingCollections
+  rating(locale: String): Int
+  sys: Sys!
+  title(locale: String): String
+}
+
+type ReviewsCollection {
+  items: [Reviews]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ReviewsFilter {
+  AND: [ReviewsFilter]
+  OR: [ReviewsFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  image_exists: Boolean
+  rating: Int
+  rating_exists: Boolean
+  rating_gt: Int
+  rating_gte: Int
+  rating_in: [Int]
+  rating_lt: Int
+  rating_lte: Int
+  rating_not: Int
+  rating_not_in: [Int]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type ReviewsLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ReviewsOrder {
+  rating_ASC
+  rating_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/routes)
+"""
+type Routes implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): RoutesDescription
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): RoutesLinkingCollections
+  sys: Sys!
+  title(locale: String): String
+}
+
+type RoutesCollection {
+  items: [Routes]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type RoutesDescription {
+  json: JSON!
+  links: RoutesDescriptionLinks!
+}
+
+type RoutesDescriptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type RoutesDescriptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type RoutesDescriptionLinks {
+  assets: RoutesDescriptionAssets!
+  entries: RoutesDescriptionEntries!
+}
+
+input RoutesFilter {
+  AND: [RoutesFilter]
+  OR: [RoutesFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  image_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type RoutesLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum RoutesOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/slider)
+"""
+type Slider implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): SliderLinkingCollections
+  sys: Sys!
+  url(locale: String, preview: Boolean): Asset
+}
+
+type SliderCollection {
+  items: [Slider]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input SliderFilter {
+  AND: [SliderFilter]
+  OR: [SliderFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  sys: SysFilter
+  url_exists: Boolean
+}
+
+type SliderLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum SliderOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type Sys {
+  environmentId: String!
+  firstPublishedAt: DateTime
+  id: String!
+  publishedAt: DateTime
+  publishedVersion: Int
+  spaceId: String!
+}
+
+input SysFilter {
+  firstPublishedAt: DateTime
+  firstPublishedAt_exists: Boolean
+  firstPublishedAt_gt: DateTime
+  firstPublishedAt_gte: DateTime
+  firstPublishedAt_in: [DateTime]
+  firstPublishedAt_lt: DateTime
+  firstPublishedAt_lte: DateTime
+  firstPublishedAt_not: DateTime
+  firstPublishedAt_not_in: [DateTime]
+  id: String
+  id_contains: String
+  id_exists: Boolean
+  id_in: [String]
+  id_not: String
+  id_not_contains: String
+  id_not_in: [String]
+  publishedAt: DateTime
+  publishedAt_exists: Boolean
+  publishedAt_gt: DateTime
+  publishedAt_gte: DateTime
+  publishedAt_in: [DateTime]
+  publishedAt_lt: DateTime
+  publishedAt_lte: DateTime
+  publishedAt_not: DateTime
+  publishedAt_not_in: [DateTime]
+  publishedVersion: Float
+  publishedVersion_exists: Boolean
+  publishedVersion_gt: Float
+  publishedVersion_gte: Float
+  publishedVersion_in: [Float]
+  publishedVersion_lt: Float
+  publishedVersion_lte: Float
+  publishedVersion_not: Float
+  publishedVersion_not_in: [Float]
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/video)
+"""
+type Video implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): VideoLinkingCollections
+  sys: Sys!
+  url(locale: String): String
+}
+
+type VideoCollection {
+  items: [Video]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input VideoFilter {
+  AND: [VideoFilter]
+  OR: [VideoFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  sys: SysFilter
+  url: String
+  url_contains: String
+  url_exists: Boolean
+  url_in: [String]
+  url_not: String
+  url_not_contains: String
+  url_not_in: [String]
+}
+
+type VideoLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum VideoOrder {
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  url_ASC
+  url_DESC
+}

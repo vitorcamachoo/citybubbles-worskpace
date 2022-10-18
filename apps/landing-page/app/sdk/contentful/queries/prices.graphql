@@ -1,0 +1,8 @@
+query Prices {
+  pricesCollection {
+    items {
+      price
+      currency
+    }
+  }
+}

@@ -1,0 +1,13 @@
+query Gallery {
+  galleryCollection {
+    items {
+      alt
+      src {
+        url
+        title
+        width
+        height
+      }
+    }
+  }
+}

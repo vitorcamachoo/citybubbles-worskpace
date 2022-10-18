@@ -1,0 +1,4 @@
+# .graphqlrc.yml
+projects:
+  landing-page:
+    schema: 'landing-page/app/api/contentful/schema.graphql'
