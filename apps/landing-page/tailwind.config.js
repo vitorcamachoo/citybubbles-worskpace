@@ -1,12 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./app/**/*.{ts,tsx}"],
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("@tailwindcss/forms")],
   daisyui: {
-    themes: false,
-    // themes: ["light"],
+    themes: [
+      {
+        mytheme: {
+          primary: "#01B636",
+        },
+      },
+    ],
   },
   theme: {
-    extend: {},
+    fontFamily: {
+      lexend: ['"Lexend"'],
+    },
   },
 };
