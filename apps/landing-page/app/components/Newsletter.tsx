@@ -1,5 +1,3 @@
-import { SocialIcon } from "react-social-icons";
-
 export const Newsletter = () => {
   return (
     <div className="bg-white py-16 sm:py-24">
