@@ -14,11 +14,11 @@ export const NavBar = () => {
       >
         <div className="flex flex-1 items-center">
           <div className="flex w-full items-center justify-between md:w-auto">
-            <div className="h-16 w-auto sm:h-20">
+            <div className="h-16 w-auto">
               <CompanyLogo />
             </div>
             <div className="-mr-2 flex items-center md:hidden">
-              <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-lime-500">
                 <span className="sr-only">Open main menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
@@ -63,7 +63,7 @@ export const NavBar = () => {
           <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
             <div className="flex items-center justify-between px-5 pt-4">
               <div className="w-full text-right -mr-2">
-                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-lime-500">
                   <span className="sr-only">Close main menu</span>
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
@@ -82,7 +82,7 @@ export const NavBar = () => {
             </div>
             <a
               href="/book"
-              className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100 uppercase"
+              className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-lime-600 hover:bg-gray-100 uppercase"
             >
               <button className="rounded-md btn btn-primary btn-md btn-outline bg-white">
                 book

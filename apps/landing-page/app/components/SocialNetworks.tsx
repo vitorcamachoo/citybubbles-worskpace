@@ -49,8 +49,8 @@ export const TripAdvisor = () => (
       <g
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         data-name="&lt;Group&gt;"
       >
         <circle cx="6" cy="13" r=".5" data-name="&lt;Path&gt;" />

@@ -12,7 +12,7 @@ export const FooterSection = () => {
             className="-mx-5 -my-2 flex flex-wrap justify-center"
             aria-label="Footer"
           >
-            {navigation.main.map(({ name, href }) => (
+            {navigation.footer.map(({ name, href }) => (
               <Link
                 to={href}
                 className="px-5 py-2 text-base text-gray-500 hover:text-gray-900 capitalize"

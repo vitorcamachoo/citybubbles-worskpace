@@ -66,7 +66,7 @@ export function MainSponsor(props: React.ComponentProps<"svg">) {
         d="M794.343 1H711.759V55.8378H794.343V1Z"
         stroke="currentColor"
         fill="none"
-        stroke-miterlimit="10"
+        strokeMiterlimit="10"
       />
 
       {/* begin stars */}

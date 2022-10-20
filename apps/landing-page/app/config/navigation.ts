@@ -10,6 +10,7 @@ export const navigation = {
     { name: "blog", href: "/blog" },
     { name: "routes", href: "/routes" },
     { name: "media", href: "/media" },
+    { name: "faq", href: "/faq" },
     { name: "contact", href: "/contact-us" },
   ],
   subfooter: [
