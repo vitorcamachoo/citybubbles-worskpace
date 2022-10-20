@@ -2,13 +2,8 @@ import { Fragment } from "react";
 import { Link } from "@remix-run/react";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-
-const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
-];
+import { CompanyLogo } from "../Logo";
+import { navigation } from "~/config/navigation";
 
 export const NavBar = () => {
   return (
@@ -19,14 +14,9 @@ export const NavBar = () => {
       >
         <div className="flex flex-1 items-center">
           <div className="flex w-full items-center justify-between md:w-auto">
-            <a href="/about-us">
-              <span className="sr-only">Your Company</span>
-              <img
-                className="h-16 w-auto sm:h-20"
-                src="/images/citybubbles-logo.png"
-                alt=""
-              />
-            </a>
+            <div className="h-16 w-auto sm:h-20">
+              <CompanyLogo />
+            </div>
             <div className="-mr-2 flex items-center md:hidden">
               <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                 <span className="sr-only">Open main menu</span>
@@ -35,14 +25,14 @@ export const NavBar = () => {
             </div>
           </div>
           <div className="hidden md:ml-10 md:block md:space-x-10">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="font-medium text-gray-500 hover:text-gray-900"
+            {navigation.main.map(({ name, href }) => (
+              <Link
+                key={name}
+                to={href}
+                className="font-medium text-gray-500 hover:text-gray-900 capitalize"
               >
-                {item.name}
-              </a>
+                {name}
+              </Link>
             ))}
           </div>
         </div>
@@ -72,14 +62,7 @@ export const NavBar = () => {
         >
           <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
             <div className="flex items-center justify-between px-5 pt-4">
-              <div>
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt=""
-                />
-              </div>
-              <div className="-mr-2">
+              <div className="w-full text-right -mr-2">
                 <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Close main menu</span>
                   <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -87,14 +70,14 @@ export const NavBar = () => {
               </div>
             </div>
             <div className="space-y-1 px-2 pt-2 pb-3">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
+              {navigation.main.map(({ name, href }) => (
+                <Link
+                  key={name}
+                  to={href}
                   className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
                 >
-                  {item.name}
-                </a>
+                  {name}
+                </Link>
               ))}
             </div>
             <a
