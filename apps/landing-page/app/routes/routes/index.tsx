@@ -1,26 +1,31 @@
-import { Link } from "@remix-run/react";
-import type { Route } from "~/sdk/mock/routes";
+import { json } from "@remix-run/node";
+import { Link, useLoaderData } from "@remix-run/react";
+import { routes } from "~/sdk/mock";
 
-export type RoutesProps = {
-  routes: Route[];
-};
+export async function loader() {
+  return json({ routes });
+}
 
-export const Routes: React.FC<RoutesProps> = ({ routes }) => {
+export default function () {
+  const { routes } = useLoaderData<typeof loader>();
+
   return (
     <div className="relative mx-auto max-w-full w-full lg:max-w-7xl">
       <div className="text-center">
         <h2 className="text-3xl font-bold tracking-tight text-lime-500 sm:text-4xl">
           Our tours
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
+        <p className="mx-auto mt-3 max-w-5xl text-xl text-gray-500 sm:mt-4">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa libero
-          labore natus atque, ducimus sed.
+          labore natus atque, ducimus sed. Lorem ipsum dolor sit amet
+          consectetur, adipisicing elit. Ipsa libero labore natus atque, ducimus
+          sed.
         </p>
       </div>
-      <div className="flex flex-row gap-4 mt-12 p-4 overflow-x-auto space-x-4 bg-neutral">
+      <div className="flex flex-wrap gap-8 justify-center mx-auto mt-8">
         {routes.map((route) => (
           <Link to={`/routes/${route.id}`} key={route.id}>
-            <div className="flex flex-col rounded-lg shadow-lg w-80 relative">
+            <div className="flex flex-col rounded-lg shadow-lg w-80">
               <div className="relative overflow-hidden h-64 w-full rounded-2xl">
                 <img
                   className="h-full w-full object-cover rounded-md brightness-75 hover:brightness-90 hover:scale-125 absolute transition-all duration-500 ease-in-out transform"
@@ -56,4 +61,4 @@ export const Routes: React.FC<RoutesProps> = ({ routes }) => {
       </div>
     </div>
   );
-};
+}

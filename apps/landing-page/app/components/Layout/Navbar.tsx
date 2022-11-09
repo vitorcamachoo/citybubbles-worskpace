@@ -29,7 +29,7 @@ export const NavBar = () => {
               <Link
                 key={name}
                 to={href}
-                className="font-medium text-gray-500 hover:text-gray-900 capitalize"
+                className="font-normal text-gray-500 hover:text-gray-900 uppercase"
               >
                 {name}
               </Link>
