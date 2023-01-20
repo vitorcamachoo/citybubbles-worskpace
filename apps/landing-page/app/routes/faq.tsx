@@ -40,7 +40,7 @@ const faqs = [
   },
 ];
 
-export default function Example() {
+export default function Faq() {
   return (
     <div>
       <section aria-labelledby="faq-heading" className="bg-white">

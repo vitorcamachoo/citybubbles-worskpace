@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
-    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
+    "dev": "concurrently \"pnpm dev:css\" \"pnpm remix dev\" \"pnpm generate:api --watch\"",
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
     "generate:api": "graphql-codegen -r dotenv/config"
   },
@@ -23,6 +23,8 @@
     "concurrently": "7.5.0",
     "daisyui": "2.38.1",
     "graphql": "^15.8.0",
+    "graphql-request": "5.1.0",
+    "graphql-tag": "2.12.6",
     "postcss": "8.4.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

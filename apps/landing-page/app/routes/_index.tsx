@@ -10,7 +10,7 @@ export async function loader() {
   return json({ features, routes });
 }
 
-export default function Index() {
+export default function Landing() {
   const { features, routes } = useLoaderData<typeof loader>();
 
   return (

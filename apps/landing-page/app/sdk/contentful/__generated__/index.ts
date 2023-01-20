@@ -175,10 +175,10 @@ export type AssetLinkingCollections = {
   galleryCollection?: Maybe<GalleryCollection>;
   heroCollection?: Maybe<HeroCollection>;
   informationCollection?: Maybe<InformationCollection>;
-  partnersCollection?: Maybe<PartnersCollection>;
   reviewsCollection?: Maybe<ReviewsCollection>;
   routesCollection?: Maybe<RoutesCollection>;
   sliderCollection?: Maybe<SliderCollection>;
+  sponsorsCollection?: Maybe<SponsorsCollection>;
 };
 
 
@@ -222,14 +222,6 @@ export type AssetLinkingCollectionsInformationCollectionArgs = {
 };
 
 
-export type AssetLinkingCollectionsPartnersCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-
 export type AssetLinkingCollectionsReviewsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -247,6 +239,14 @@ export type AssetLinkingCollectionsRoutesCollectionArgs = {
 
 
 export type AssetLinkingCollectionsSliderCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AssetLinkingCollectionsSponsorsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -791,114 +791,6 @@ export enum InformationOrder {
   TitleDesc = 'title_DESC'
 }
 
-/** [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/partners) */
-export type Partners = Entry & {
-  __typename?: 'Partners';
-  contentfulMetadata: ContentfulMetadata;
-  image?: Maybe<Asset>;
-  linkedFrom?: Maybe<PartnersLinkingCollections>;
-  message?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  sys: Sys;
-  url?: Maybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/partners) */
-export type PartnersImageArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/partners) */
-export type PartnersLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/partners) */
-export type PartnersMessageArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/partners) */
-export type PartnersNameArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-
-/** [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/partners) */
-export type PartnersUrlArgs = {
-  locale?: InputMaybe<Scalars['String']>;
-};
-
-export type PartnersCollection = {
-  __typename?: 'PartnersCollection';
-  items: Array<Maybe<Partners>>;
-  limit: Scalars['Int'];
-  skip: Scalars['Int'];
-  total: Scalars['Int'];
-};
-
-export type PartnersFilter = {
-  AND?: InputMaybe<Array<InputMaybe<PartnersFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<PartnersFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  image_exists?: InputMaybe<Scalars['Boolean']>;
-  message?: InputMaybe<Scalars['String']>;
-  message_contains?: InputMaybe<Scalars['String']>;
-  message_exists?: InputMaybe<Scalars['Boolean']>;
-  message_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  message_not?: InputMaybe<Scalars['String']>;
-  message_not_contains?: InputMaybe<Scalars['String']>;
-  message_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name?: InputMaybe<Scalars['String']>;
-  name_contains?: InputMaybe<Scalars['String']>;
-  name_exists?: InputMaybe<Scalars['Boolean']>;
-  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  name_not?: InputMaybe<Scalars['String']>;
-  name_not_contains?: InputMaybe<Scalars['String']>;
-  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  sys?: InputMaybe<SysFilter>;
-  url?: InputMaybe<Scalars['String']>;
-  url_contains?: InputMaybe<Scalars['String']>;
-  url_exists?: InputMaybe<Scalars['Boolean']>;
-  url_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  url_not?: InputMaybe<Scalars['String']>;
-  url_not_contains?: InputMaybe<Scalars['String']>;
-  url_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type PartnersLinkingCollections = {
-  __typename?: 'PartnersLinkingCollections';
-  entryCollection?: Maybe<EntryCollection>;
-};
-
-
-export type PartnersLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-};
-
-export enum PartnersOrder {
-  NameAsc = 'name_ASC',
-  NameDesc = 'name_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  UrlAsc = 'url_ASC',
-  UrlDesc = 'url_DESC'
-}
-
 /** [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/prices) */
 export type Prices = Entry & {
   __typename?: 'Prices';
@@ -1015,8 +907,6 @@ export type Query = {
   heroCollection?: Maybe<HeroCollection>;
   information?: Maybe<Information>;
   informationCollection?: Maybe<InformationCollection>;
-  partners?: Maybe<Partners>;
-  partnersCollection?: Maybe<PartnersCollection>;
   prices?: Maybe<Prices>;
   pricesCollection?: Maybe<PricesCollection>;
   reviews?: Maybe<Reviews>;
@@ -1025,6 +915,8 @@ export type Query = {
   routesCollection?: Maybe<RoutesCollection>;
   slider?: Maybe<Slider>;
   sliderCollection?: Maybe<SliderCollection>;
+  sponsors?: Maybe<Sponsors>;
+  sponsorsCollection?: Maybe<SponsorsCollection>;
   video?: Maybe<Video>;
   videoCollection?: Maybe<VideoCollection>;
 };
@@ -1125,23 +1017,6 @@ export type QueryInformationCollectionArgs = {
 };
 
 
-export type QueryPartnersArgs = {
-  id: Scalars['String'];
-  locale?: InputMaybe<Scalars['String']>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-};
-
-
-export type QueryPartnersCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>;
-  locale?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Array<InputMaybe<PartnersOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']>;
-  skip?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<PartnersFilter>;
-};
-
-
 export type QueryPricesArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
@@ -1207,6 +1082,23 @@ export type QuerySliderCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<SliderFilter>;
+};
+
+
+export type QuerySponsorsArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QuerySponsorsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<SponsorsOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<SponsorsFilter>;
 };
 
 
@@ -1501,6 +1393,100 @@ export type SliderLinkingCollectionsEntryCollectionArgs = {
 };
 
 export enum SliderOrder {
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** List of sponsors [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/sponsors) */
+export type Sponsors = Entry & {
+  __typename?: 'Sponsors';
+  alt?: Maybe<Scalars['String']>;
+  contentfulMetadata: ContentfulMetadata;
+  image?: Maybe<Asset>;
+  link?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<SponsorsLinkingCollections>;
+  sys: Sys;
+};
+
+
+/** List of sponsors [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/sponsors) */
+export type SponsorsAltArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** List of sponsors [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/sponsors) */
+export type SponsorsImageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** List of sponsors [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/sponsors) */
+export type SponsorsLinkArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** List of sponsors [See type definition](https://app.contentful.com/spaces/c65fbpf953uf/content_types/sponsors) */
+export type SponsorsLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type SponsorsCollection = {
+  __typename?: 'SponsorsCollection';
+  items: Array<Maybe<Sponsors>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type SponsorsFilter = {
+  AND?: InputMaybe<Array<InputMaybe<SponsorsFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<SponsorsFilter>>>;
+  alt?: InputMaybe<Scalars['String']>;
+  alt_contains?: InputMaybe<Scalars['String']>;
+  alt_exists?: InputMaybe<Scalars['Boolean']>;
+  alt_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  alt_not?: InputMaybe<Scalars['String']>;
+  alt_not_contains?: InputMaybe<Scalars['String']>;
+  alt_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  image_exists?: InputMaybe<Scalars['Boolean']>;
+  link?: InputMaybe<Scalars['String']>;
+  link_contains?: InputMaybe<Scalars['String']>;
+  link_exists?: InputMaybe<Scalars['Boolean']>;
+  link_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  link_not?: InputMaybe<Scalars['String']>;
+  link_not_contains?: InputMaybe<Scalars['String']>;
+  link_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type SponsorsLinkingCollections = {
+  __typename?: 'SponsorsLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type SponsorsLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum SponsorsOrder {
+  AltAsc = 'alt_ASC',
+  AltDesc = 'alt_DESC',
+  LinkAsc = 'link_ASC',
+  LinkDesc = 'link_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
