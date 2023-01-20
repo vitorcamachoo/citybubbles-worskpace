@@ -58,7 +58,7 @@ export default function () {
               </dl>
               <div className="mt-6 text-center lg:text-left">
                 <Link
-                  to={`/book?route=${route.id}`}
+                  to="/book"
                   className="inline-flex rounded-md border border-transparent bg-lime-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-lime-700"
                 >
                   Book now

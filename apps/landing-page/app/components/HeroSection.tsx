@@ -1,3 +1,5 @@
+import { Link } from "@remix-run/react";
+
 export const HeroSection = () => {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:pt-16">
@@ -14,9 +16,9 @@ export const HeroSection = () => {
             </span>
           </h1>
           <p className="mt-8 text-center">
-            <button className="btn btn-primary text-white w-80">
+            <Link to="/book" className="btn btn-primary text-white w-80">
               book now
-            </button>
+            </Link>
           </p>
         </div>
         <div className="relative mt-12 sm:mx-auto sm:max-w-xl lg:col-span-6 lg:mx-0 lg:mt-0 lg:flex lg:max-w-none lg:items-center">
