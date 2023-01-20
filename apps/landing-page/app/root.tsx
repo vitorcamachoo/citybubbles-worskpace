@@ -30,12 +30,17 @@ export default function App() {
       <body>
         <div>
           <NavBar />
-          <main className="min-h-screen my-12">
+          <main className="min-h-screen my-2 md:my-12">
             <Outlet />
           </main>
           <FooterSection />
         </div>
         {process.env.NODE_ENV === "production" && <ScrollRestoration />}
+        <script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        ></script>
         <Scripts />
         <LiveReload />
       </body>
