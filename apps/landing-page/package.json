@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
-    "dev": "concurrently \"pnpm dev:css\" \"pnpm remix dev\" \"pnpm generate:api --watch\"",
+    "dev": "concurrently \"pnpm dev:css\" \"pnpm generate:api --watch\" \"pnpm remix dev\"",
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
     "generate:api": "graphql-codegen -r dotenv/config"
   },
